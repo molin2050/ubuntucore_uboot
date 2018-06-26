@@ -244,7 +244,8 @@ u32 spl_boot_device(void)
 	}
 
 	panic("Unknown boot source %d\n", boot_source);
-	return -1;		/* Never reached */
+	return BOOT_DEVICE_MMC1;
+	//return -1;		/* Never reached */ //added by liujiqing 20180626
 }
 
 /* No confirmation data available in SPL yet. Hardcode bootmode */
