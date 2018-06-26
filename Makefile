@@ -243,7 +243,7 @@ export	HOSTARCH HOSTOS
 
 # set default to nothing for native builds
 ifeq ($(HOSTARCH),$(ARCH))
-CROSS_COMPILE ?=
+CROSS_COMPILE ?= /home/curry/Downloads/lichee/brandy/gcc-linaro/bin/arm-linux-gnueabi-
 endif
 
 KCONFIG_CONFIG	?= .config

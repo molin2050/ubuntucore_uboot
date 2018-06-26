@@ -555,6 +555,7 @@ void sunxi_board_init(void)
 	 * Only clock up the CPU to full speed if we are reasonably
 	 * assured it's being powered with suitable core voltage
 	 */
+	power_failed = 0;
 	if (!power_failed)
 		clock_set_pll1(CONFIG_SYS_CLK_FREQ);
 	else
