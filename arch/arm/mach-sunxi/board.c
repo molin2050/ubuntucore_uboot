@@ -244,7 +244,7 @@ u32 spl_boot_device(void)
 	}
 
 	panic("Unknown boot source %d\n", boot_source);
-	return BOOT_DEVICE_MMC1;
+		return BOOT_DEVICE_BOARD;
 	//return -1;		/* Never reached */ //added by liujiqing 20180626
 }
 
