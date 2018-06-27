@@ -213,7 +213,11 @@ int spl_init(void)
 
 __weak void board_boot_order(u32 *spl_boot_list)
 {
+			puts(">>spl:board_init_r(2.6)\n");
+
 	spl_boot_list[0] = spl_boot_device();
+		puts(">>spl:board_init_r(2.7)\n");
+
 }
 
 static struct spl_image_loader *spl_ll_find_loader(uint boot_device)
@@ -311,6 +315,8 @@ void board_init_r(gd_t *dummy1, ulong dummy2)
 		puts(">>spl:board_init_r(2)\n");
 
 	memset(&spl_image, '\0', sizeof(spl_image));
+		puts(">>spl:board_init_r(2.5)\n");
+
 	board_boot_order(spl_boot_list);
 		puts(">>spl:board_init_r(3)\n");
 
