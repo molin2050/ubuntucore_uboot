@@ -284,7 +284,7 @@ void board_init_r(gd_t *dummy1, ulong dummy2)
 		BOOT_DEVICE_NONE,
 	};
 	struct spl_image_info spl_image;
-
+	puts(">>spl:board_init_r()\n");
 	debug(">>spl:board_init_r()\n");
 
 #if defined(CONFIG_SYS_SPL_MALLOC_START)
@@ -303,19 +303,23 @@ void board_init_r(gd_t *dummy1, ulong dummy2)
 	 */
 	timer_init();
 #endif
+	puts(">>spl:board_init_r(1)\n");
 
 #ifdef CONFIG_SPL_BOARD_INIT
 	spl_board_init();
 #endif
+		puts(">>spl:board_init_r(2)\n");
 
 	memset(&spl_image, '\0', sizeof(spl_image));
 	board_boot_order(spl_boot_list);
+		puts(">>spl:board_init_r(3)\n");
 
 	if (boot_from_devices(&spl_image, spl_boot_list,
 			      ARRAY_SIZE(spl_boot_list))) {
 		puts("SPL: failed to boot from all boot devices\n");
 		hang();
 	}
+		puts(">>spl:board_init_r(4)\n");
 
 	switch (spl_image.os) {
 	case IH_OS_U_BOOT:
