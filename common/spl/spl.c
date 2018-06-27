@@ -281,8 +281,8 @@ static int boot_from_devices(struct spl_image_info *spl_image,
 void board_init_r(gd_t *dummy1, ulong dummy2)
 {
 	u32 spl_boot_list[] = {
-		BOOT_DEVICE_MMC1,
-		BOOT_DEVICE_MMC1,
+		BOOT_DEVICE_NONE,
+		BOOT_DEVICE_NONE,
 		BOOT_DEVICE_NONE,
 		BOOT_DEVICE_NONE,
 		BOOT_DEVICE_NONE,
@@ -329,26 +329,38 @@ void board_init_r(gd_t *dummy1, ulong dummy2)
 
 	switch (spl_image.os) {
 	case IH_OS_U_BOOT:
+		puts(">>spl:board_init_r(5)\n");
+
 		debug("Jumping to U-Boot\n");
 		break;
 #ifdef CONFIG_SPL_OS_BOOT
 	case IH_OS_LINUX:
+		puts(">>spl:board_init_r(6)\n");
+
 		debug("Jumping to Linux\n");
 		spl_board_prepare_for_linux();
 		jump_to_image_linux(&spl_image,
 				    (void *)CONFIG_SYS_SPL_ARGS_ADDR);
 #endif
 	default:
+		puts(">>spl:board_init_r(7)\n");
+
 		debug("Unsupported OS image.. Jumping nevertheless..\n");
 	}
 #if defined(CONFIG_SYS_MALLOC_F_LEN) && !defined(CONFIG_SYS_SPL_MALLOC_SIZE)
 	debug("SPL malloc() used %#lx bytes (%ld KB)\n", gd->malloc_ptr,
 	      gd->malloc_ptr / 1024);
+		puts(">>spl:board_init_r(8)\n");
+
 #endif
 
 	debug("loaded - jumping to U-Boot...\n");
 	spl_board_prepare_for_boot();
+		puts(">>spl:board_init_r(9)\n");
+
 	jump_to_image_no_args(&spl_image);
+		puts(">>spl:board_init_r(10)\n");
+
 }
 
 /*
