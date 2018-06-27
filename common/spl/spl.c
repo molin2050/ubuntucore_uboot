@@ -281,8 +281,8 @@ static int boot_from_devices(struct spl_image_info *spl_image,
 void board_init_r(gd_t *dummy1, ulong dummy2)
 {
 	u32 spl_boot_list[] = {
-		BOOT_DEVICE_NONE,
-		BOOT_DEVICE_NONE,
+		BOOT_DEVICE_BOARD,
+		BOOT_DEVICE_MMC1,
 		BOOT_DEVICE_NONE,
 		BOOT_DEVICE_NONE,
 		BOOT_DEVICE_NONE,
