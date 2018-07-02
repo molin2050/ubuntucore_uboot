@@ -162,9 +162,9 @@ int spl_parse_image_header(struct spl_image_info *spl_image,
 __weak void __noreturn jump_to_image_no_args(struct spl_image_info *spl_image)
 {
 	typedef void __noreturn (*image_entry_noargs_t)(void);
-
-	image_entry_noargs_t image_entry = (image_entry_noargs_t)0x4a000000;
-		/*(image_entry_noargs_t)spl_image->entry_point;*/
+	/*spl_image->entry_point = 0x4a000000;*/
+	image_entry_noargs_t image_entry = 
+		(image_entry_noargs_t)spl_image->entry_point;
 	debug("image entry point: 0x%lX\n", spl_image->entry_point);
 	
 	image_entry();
@@ -215,7 +215,7 @@ __weak void board_boot_order(u32 *spl_boot_list)
 {
 			puts(">>spl:board_init_r(2.6)\n");
 
-	//spl_boot_list[0] = spl_boot_device();
+	spl_boot_list[0] = spl_boot_device();
 		puts(">>spl:board_init_r(2.7)\n");
 
 }
