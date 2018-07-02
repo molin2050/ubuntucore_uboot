@@ -165,7 +165,6 @@ __weak void __noreturn jump_to_image_no_args(struct spl_image_info *spl_image)
 
 	image_entry_noargs_t image_entry =
 		(image_entry_noargs_t)spl_image->entry_point;
-	puts("image entry point: 0x%lX\n", spl_image->entry_point);
 	debug("image entry point: 0x%lX\n", spl_image->entry_point);
 	
 	image_entry();
