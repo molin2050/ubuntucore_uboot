@@ -217,7 +217,7 @@ __weak void board_boot_order(u32 *spl_boot_list)
 {
 			puts(">>spl:board_init_r(2.6)\n");
 
-	spl_boot_list[0] = spl_boot_device();
+	/*spl_boot_list[0] = spl_boot_device();*/
 		puts(">>spl:board_init_r(2.7)\n");
 
 }
